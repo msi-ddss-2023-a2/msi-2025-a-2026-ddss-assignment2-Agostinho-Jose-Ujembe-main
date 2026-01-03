@@ -1,0 +1,26 @@
+# 
+# MSI DDSS 2025/2026 - Assignment 2
+# The code and resources available in this repository are to be used in the scope of the DDSS course.
+#
+# Authors: Agostinho Jose Ujembe <uc2025135102@student.uc.pt>
+#
+
+services:
+  db:
+    build: ./postgresql
+    container_name: db
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+  web:
+    build: ./php
+    container_name: web
+    volumes:
+      - "./php/htdocs:/var/www/html"
+    expose:
+      - "80"
+    ports:
+      - "8080:80"
+    depends_on:
+      - db

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+
+    =========================================
+    Design and Development of Secure Software
+    ============= MSI 2025/2026 =============
+    ======== Practical Assignment #2 ========
+    ================ Part #1 ================
+    =========================================
+
+      Department of Informatics Engineering
+              University of Coimbra          
+   
+        Agostinho Jose Ujembe <uc2025135102@student.uc.pt>
+        
+   
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DDSS PA2 - Part 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div align="center">
+
+    <h1>Design and Development of Secure Software</h1>
+    <h2>Practical Assignment #2 - Part 1</h2>
+
+    <br>
+
+    <!-- ================= VULNERABLE FORM ================= -->
+    <form method="POST" action="part1_vulnerable.php">
+        <table border="1" cellpadding="4" style="width:300px;background-color:#f1f1f1;">
+            <thead>
+                <tr>
+                    <th colspan="2">Part 1.0 - Vulnerable Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="username" placeholder="Enter Username" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" placeholder="Enter Password" required></td>
+                </tr>
+                <tr>
+                    <td>Remember me</td>
+                    <td><input type="checkbox" name="remember" checked></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <button type="submit">Login</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <br><br>
+
+    <!-- ================= SECURE FORM ================= -->
+    <form method="POST" action="part1_correct.php">
+        <table border="1" cellpadding="4" style="width:300px;background-color:#f19191;">
+            <thead>
+                <tr>
+                    <th colspan="2">Part 1.1 - Correct Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="username" placeholder="Enter Username" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" placeholder="Enter Password" required></td>
+                </tr>
+                <tr>
+                    <td>Remember me</td>
+                    <td><input type="checkbox" name="remember" checked></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="right">
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf']) ?>">
+                        <button type="submit">Login</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
+</body>
+</html>
